@@ -1,5 +1,5 @@
 # ![](https://tutorgum.com/wp-content/uploads/2020/11/molecular.png)
-# Capstone: Prediction Drug Cardiotoxicity
+# Capstone: Predicting Drug Cardiotoxicity
 Kehinde Ajayi, Ph.D.
 
 ## __Contents__:
@@ -19,13 +19,13 @@ Kehinde Ajayi, Ph.D.
 A pharmaceutical company (currently in stealth mode) wants to reduce the costs of new drugs by at least 25% over the next 3 years. To that end, I want to predict the cardiotoxicity of candidate compounds in advance of synthesizing them, thereby avoiding wasting resources on unproductive development.
 
 ### __Introduction__
-For patients, new medicines offer fewer side effects, fewer hospitalizations, improved quality of life, increased productivity, and importantly, extended lives. Developing medicines is a long, complex process. On average, it takes ___at least ten years___ for a new medicine to complete the journey from initial discovery to the marketplace, with clinical trials alone taking six to seven years on average. The average cost to research and develop each successful drug is estimated to be __$2.6 billion__[1]. This number incorporates the cost of failures – of the thousands and sometimes millions of compounds that may be screened and assessed early in the R&D process, only a few of which will ultimately receive approval. _The overall probability of clinical success (the likelihood that a drug entering clinical testing will eventually be approved) is estimated to be less than 12%_. 
+For patients, new medicines offer fewer side effects, fewer hospitalizations, improved quality of life, increased productivity, and importantly, extended lives. Developing medicines is a long, complex process. On average, it takes ___at least ten years___ for a new medicine to complete the journey from initial discovery to the marketplace, with clinical trials alone taking six to seven years on average. The average cost to research and develop each successful drug is estimated to be __$2.6 billion__.<a id='fnref1'>[1](#ref1)</a> This number incorporates the cost of failures – of the thousands and sometimes millions of compounds that may be screened and assessed early in the R&D process, only a few of which will ultimately receive approval. _The overall probability of clinical success (the likelihood that a drug entering clinical testing will eventually be approved) is estimated to be less than 12%_. 
 
-One of the reasons drugs fail in the clinic is because they exhibit unwanted and often serious side effects.  For example, the unintended and often promiscous inhibition of the cardiac human Ether-à-go-go related gene (hERG) potassium channel is a common cause for either delay or removal of therapeutic compounds from development and withdrawal of marketed drugs.[2] The clinical manifestion is prolongation of the duration between QRS complex and T-wave measured by surface electrocardiogram (ECG)—hence Long QT Syndrome. Machine learning techniques may be useful for predicting the level of hERG activity of a compound before money is spent on its development into a drug.
+One of the reasons drugs fail in the clinic is because they exhibit unwanted and often serious side effects.  For example, the unintended and often promiscous inhibition of the cardiac human Ether-à-go-go related gene (hERG) potassium channel is a common cause for either delay or removal of therapeutic compounds from development and withdrawal of marketed drugs.<a id='fnref2'>[2](#ref2)</a> The clinical manifestion is prolongation of the duration between QRS complex and T-wave measured by surface electrocardiogram (ECG)—hence Long QT Syndrome. Machine learning techniques may be useful for predicting the level of hERG activity of a compound before money is spent on its development into a drug.
 
 ### __Dataset information__
 
- The hERGCentral (www.hergcentral.org) is mainly based on experimental data obtained from a primary screen by electrophysiology against  300,000 structurally diverse compounds. The system is aimed to display and combine three resources: primary electrophysiological data, literature, as well as online reports and chemical library collections. [3,4]
+ The hERGCentral (www.hergcentral.org) is mainly based on experimental data obtained from a primary screen by electrophysiology against  300,000 structurally diverse compounds. The system is aimed to display and combine three resources: primary electrophysiological data, literature, as well as online reports and chemical library collections. <a id='fnref3'>[3](#ref3)</a>,<a id='fnref4'>[4](#ref4)</a>
 
 
 ### __Methods and Tools__
@@ -79,9 +79,11 @@ The results showed that geometric information was needed to obtain a model that 
 |          Features          	| Validation MCC 	| Validation accuracy 	|
 |--------------------	|----------------	|---------------------	|
 | No Structure - calculated variables only       	| 0.0            	| 0.955               	|
-| ECFP fingerprints[5]  	| 0.456          	| 0.962               	|
-| Graph convolutions[6]	| 0.516          	| 0.959               	|
+| ECFP fingerprints<a id='fnref5'>[5](#ref5)</a>  	| 0.456          	| 0.962               	|
+| Graph convolutions<a id='fnref6'>[6](#ref6)</a>	| 0.516          	| 0.959               	|
 
+The best model from the graph convolution embeddings:  
+![](./imgs/pseudo_roc_curve.png)
 
 ### __Next Steps__
 
@@ -101,16 +103,16 @@ The results showed that geometric information was needed to obtain a model that 
 
 ### __References__
 
-[1]http://phrma-docs.phrma.org/sites/default/files/pdf/rd_brochure_022307.pdf
+<a id="ref1">1</a>. "Biopharmaceutical Research & Development: The Process Behind New Medicines" (http://phrma-docs.phrma.org/sites/default/files/pdf/rd_brochure_022307.pdf)<a href=#fnref1>↩︎</a>
 
-[2]https://www.cambridgemedchemconsulting.com/resources/herg_activity.html
+<a id="ref2">2</a>. "Human Ether-a-go-go-Related Gene (hERG) Blockers" (https://www.cambridgemedchemconsulting.com/resources/herg_activity.html)<a href=#fnref2>↩︎</a>
 
-[3]https://www.nature.com/articles/aps2015143
+<a id="ref3">3</a>. "Investigation of miscellaneous hERG inhibition in large diverse compound collection using automated patch-clamp assay" (https://www.nature.com/articles/aps2015143) <a href=#fnref3>↩︎</a>
 
-[4]https://pubmed.ncbi.nlm.nih.gov/22149888/
+<a id="ref4">4</a>. "hERGCentral: a large database to store, retrieve, and analyze compound-human Ether-à-go-go related gene channel interactions to facilitate cardiotoxicity assessment in drug development" (https://pubmed.ncbi.nlm.nih.gov/22149888/)<a href=#fnref4>↩︎</a>
 
-[5]https://pubs.acs.org/doi/10.1021/ci100050t
+<a id="ref5">5</a>. "Extended-Connectivity Fingerprints" (https://pubs.acs.org/doi/10.1021/ci100050t)<a href=#fnref5>↩︎</a>
 
-[6]https://arxiv.org/abs/1509.09292
+<a id="ref6">6</a>. "Convolutional Networks on Graphs for Learning Molecular Fingerprints" (https://arxiv.org/abs/1509.09292)<a href=#fnref6>↩︎</a>
 
 
