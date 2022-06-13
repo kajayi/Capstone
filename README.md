@@ -25,7 +25,7 @@ One of the reasons drugs fail in the clinic is because they exhibit unwanted and
 
 ### __Dataset information__
 
- The hERGCentral (www.hergcentral.org) is mainly based on experimental data obtained from a primary screen by electrophysiology against  300,000 structurally diverse compounds. The system is aimed to display and combine three resources: primary electrophysiological data, literature, as well as online reports and chemical library collections. <a id='fnref3'>[3](#ref3)</a>,<a id='fnref4'>[4](#ref4)</a>
+ The hERGCentral (www.hergcentral.org) is mainly based on experimental data obtained from a primary screen by electrophysiology against more than 300,000 structurally diverse compounds. The system is aimed to display and combine three resources: primary electrophysiological data, literature, as well as online reports and chemical library collections. <a id='fnref3'>[3](#ref3)</a>,<a id='fnref4'>[4](#ref4)</a>
 
 
 ### __Methods and Tools__
@@ -45,36 +45,37 @@ The averages for 10 of the 13 calculated structural features are as follows:
 
 |                     |       active |     inactive |
 |:--------------------|-------------:|-------------:|
-| H_bond_acceptors    |  5.11452     |  4.87893     |
-| H_bond_donors       |  0.940192    |  1.18231     |
-| SMILES_length       | 47.8869      | 43.1258      |
+| H_bond_acceptors    |  **5.11452**     |  4.87893     |
+| H_bond_donors       |  0.940192    |  **1.18231**     |
+| SMILES_length       | **47.8869**      | 43.1258      |
 | aromatic_rings      |  2.53092     |  2.25245     |
 | formal_charge       | -0.000436554 |  0.000289983 |
 | num_heteroatoms     |  7.09015     |  6.94303     |
-| num_rotatable_bonds |  6.01608     |  4.92701     |
+| num_rotatable_bonds |  **6.01608**     |  4.92701     |
 | num_stereocenters   |  0.392026    |  0.396021    |
 | ro5_violations      |  0.107974    |  0.0770501   |
-| total_num_rings     |  3.5072      |  2.98087     |
+| total_num_rings     |  **3.5072**      |  2.98087     |
 
-From the above, it seems that hERG inhibitors, on average, have a greater number of H-bond acceptors and fewer H-bond donors, suggesting that the binding site of hERG may have serine, threonine, or proline residues.  hERG inhibitors tend to have more rings and tend to be more flexible (see # of rotatable bonds). 
+From the above, it seems that hERG inhibitors, on average, have a greater number of H-bond acceptors and fewer H-bond donors, suggesting that the binding site of hERG may have H-bond-donating residues (e.g., serine, threonine, proline).  However, the differences are quite small, so it important to avoid over-interpreting that result.  The data also suggests that hERG inhibitors tend to have more rings and tend to be more flexible (see # of rotatable bonds), though both attributes could be byproducts of a higher average molecular weight (see below). 
 
-Conventional wisdom states that hERG inhibitors tend to 1) have higher molecular weights, 2) be more hydrophobic, and 3) contain a basic nitrogen group.  Exploratory data analysis seems to corroborate those ideas:
+Conventional wisdom states that hERG inhibitors tend to 1) have higher molecular weights, 2) be more hydrophobic, and 3) contain basic nitrogen groups.  Exploratory data analysis seems to corroborate those ideas:
 
 ![](./imgs/basic_nitrogens.png) ![](./imgs/no_basic_nitrogens.png) 
 
 Compare with the active/inactive distribution of the full dataset:  
 ![](./imgs/baseline.png)
 
-
+Distributons of PSA, cLogP, and molecular weight:  
+>![](./imgs/distributions.png)
 
 ### __Models and Results__
 
 Embeddings from SMILES strings (TBD), fingerprints, and graph convolutions are herein compared.  The fingerprint embeddings were added to a single layer, 4096-neuron perceptron, whereas the graph convolutions were added to a single layer of 256 neurons. 
 
-An initial model using the calculated features and their interactions terms (105 features in all) gave a model that was no better than baseline, with an MCC of 0. 
+An initial model using the calculated features and their interactions terms (105 features in all) gave a model that was no better than baseline, with a Matthews Correlation Coefficient (MCC) of 0. 
 
 
-The results showed that geometric information was needed to obtain a model that performed any better than baseline.  The embeddings form graph convolutions performed slightly better than those from extended-connectivity fingerprints, as determined using the Matthews Correlation Coefficient, but the model still needs a lot of work.  
+The results showed that geometric information was needed to obtain a model that performed any better than baseline.  The embeddings form graph convolutions performed slightly better than those from extended-connectivity fingerprints, as determined by the MCC, but the model still needs a lot of work.  
 
 |          Features          	| Validation MCC 	| Validation accuracy 	|
 |--------------------	|----------------	|---------------------	|
@@ -82,7 +83,7 @@ The results showed that geometric information was needed to obtain a model that 
 | ECFP fingerprints<a id='fnref5'>[5](#ref5)</a>  	| 0.456          	| 0.962               	|
 | Graph convolutions<a id='fnref6'>[6](#ref6)</a>	| 0.516          	| 0.959               	|
 
-The best model from the graph convolution embeddings:  
+Performance of the best model from the graph convolution embeddings:  
 ![](./imgs/pseudo_roc_curve.png)
 
 ### __Next Steps__
@@ -107,7 +108,7 @@ The best model from the graph convolution embeddings:
 
 <a id="ref2">2</a>. "Human Ether-a-go-go-Related Gene (hERG) Blockers" (https://www.cambridgemedchemconsulting.com/resources/herg_activity.html)<a href=#fnref2>↩︎</a>
 
-<a id="ref3">3</a>. "Investigation of miscellaneous hERG inhibition in large diverse compound collection using automated patch-clamp assay" (https://www.nature.com/articles/aps2015143) <a href=#fnref3>↩︎</a>
+<a id="ref3">3</a>. "Investigation of miscellaneous hERG inhibition in large diverse compound collection using automated patch-clamp assay" (https://www.nature.com/articles/aps2015143)<a href=#fnref3>↩︎</a>
 
 <a id="ref4">4</a>. "hERGCentral: a large database to store, retrieve, and analyze compound-human Ether-à-go-go related gene channel interactions to facilitate cardiotoxicity assessment in drug development" (https://pubmed.ncbi.nlm.nih.gov/22149888/)<a href=#fnref4>↩︎</a>
 
