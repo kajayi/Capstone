@@ -1,10 +1,10 @@
-# ![](https://tutorgum.com/wp-content/uploads/2020/11/molecular.png)
-# Capstone: Predicting Drug Cardiotoxicity
-Kehinde Ajayi, Ph.D.
+![](https://tutorgum.com/wp-content/uploads/2020/11/molecular.png)
+# Capstone: Predicting Drug Cardiotoxicity  
+### Kehinde Ajayi, Ph.D.  
 
 ## __Contents__:
 - [Problem Statement](#Problem-Statement)
-- [EXECUTIVE SUMMARY](#Introduction)
+- [Introduction](#Introduction)
 - [Methods and Tools](#Methods-and-Tools)
 - [EDA and Observations](#EDA-and-Observations)
 - [Models and Results](#Models-and-Results)
@@ -25,7 +25,7 @@ One of the reasons drugs fail in the clinic is because they exhibit unwanted and
 
 ### __Dataset information__
 
- The hERGCentral (www.hergcentral.org) is mainly based on experimental data obtained from a primary screen by electrophysiology against more than 300,000 structurally diverse compounds. The system is aimed to display and combine three resources: primary electrophysiological data, literature, as well as online reports and chemical library collections. <a id='fnref3'>[3](#ref3)</a>,<a id='fnref4'>[4](#ref4)</a>
+ The hERGCentral (www.hergcentral.org) is mainly based on experimental data obtained from a primary screen by patch clamp electrophysiology against more than 300,000 structurally diverse compounds. The system is aimed to display and combine three resources: primary electrophysiological data, literature, as well as online reports and chemical library collections. <a id='fnref3'>[3](#ref3)</a>,<a id='fnref4'>[4](#ref4)</a>
 
 
 ### __Methods and Tools__
@@ -41,6 +41,8 @@ RDKit was used to calculate 13 structural features:  molecular weight, logP, pol
 ### __EDA and Observations__
 
 The averages for 10 of the 13 calculated structural features are as follows:
+
+![](/home/xohdeeacque/flex/Capstone/ka_capstone/imgs/chemical_property_rankings.png)
 
 
 |                     |       active |     inactive |
@@ -67,6 +69,14 @@ Compare with the active/inactive distribution of the full dataset:
 
 Distributons of PSA, cLogP, and molecular weight:  
 >![](./imgs/distributions.png)
+
+However, a common issue with compound libraries is that molecular weight is often correlated with PSA and/or cLogP. Such collinearity is, to a large degree, an unintended consequence of the synthetic methods that are commonly employed for making larger compounds (e.g., aromatic groups are readily available and relatively easy to append to small molecules). Thus, it is not always clear that high-molecular weight _per se_ is a liability with respect to cardiotoxicity.  This is one of the reasons why metrics that incorporate _ligand efficiency_ are popular among medicial chemists.
+
+The present library exhibits some correlations between MW and cLogP and PSA, though they are not quite as pronounced as in many other libraries:
+
+![](./imgs/clogp_mw.png)
+![](./imgs/psa_mw.png)
+
 
 ### __Models and Results__
 
@@ -115,5 +125,4 @@ Performance of the best model from the graph convolution embeddings:
 <a id="ref5">5</a>. "Extended-Connectivity Fingerprints" (https://pubs.acs.org/doi/10.1021/ci100050t)<a href=#fnref5>↩︎</a>
 
 <a id="ref6">6</a>. "Convolutional Networks on Graphs for Learning Molecular Fingerprints" (https://arxiv.org/abs/1509.09292)<a href=#fnref6>↩︎</a>
-
 
