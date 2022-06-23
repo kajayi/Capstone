@@ -42,21 +42,8 @@ RDKit was used to calculate 13 structural features:  molecular weight, logP, pol
 
 The averages for 10 of the 13 calculated structural features are as follows:
 
-![](/home/xohdeeacque/flex/Capstone/ka_capstone/imgs/chemical_property_rankings.png)
+![](./imgs/chemical_property_rankings.png)
 
-
-|                     |       active |     inactive |
-|:--------------------|-------------:|-------------:|
-| H_bond_acceptors    |  **5.11452**     |  4.87893     |
-| H_bond_donors       |  0.940192    |  **1.18231**     |
-| SMILES_length       | **47.8869**      | 43.1258      |
-| aromatic_rings      |  2.53092     |  2.25245     |
-| formal_charge       | -0.000436554 |  0.000289983 |
-| num_heteroatoms     |  7.09015     |  6.94303     |
-| num_rotatable_bonds |  **6.01608**     |  4.92701     |
-| num_stereocenters   |  0.392026    |  0.396021    |
-| ro5_violations      |  0.107974    |  0.0770501   |
-| total_num_rings     |  **3.5072**      |  2.98087     |
 
 From the above, it seems that hERG inhibitors, on average, have a greater number of H-bond acceptors and fewer H-bond donors, suggesting that the binding site of hERG may have H-bond-donating residues (e.g., serine, threonine, proline).  However, the differences are quite small, so it important to avoid over-interpreting that result.  The data also suggests that hERG inhibitors tend to have more rings and tend to be more flexible (see # of rotatable bonds), though both attributes could be byproducts of a higher average molecular weight (see below). 
 
