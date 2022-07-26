@@ -81,11 +81,20 @@ The results showed that geometric information was needed to obtain a model that 
 | ECFP fingerprints<a id='fnref5'>[5](#ref5)</a>  	| 0.456          	| 0.962               	|
 | Graph convolutions<a id='fnref6'>[6](#ref6)</a>	| 0.516          	| 0.959               	|
 
-Performance of the best model from the graph convolution embeddings:  
-![](./imgs/pseudo_roc_curve.png)
+The performance of the model will vary in accordance with the way the training and validation data are prepared.  
+Performance of the best model from the graph convolution embeddings is as follows:  
+![](./imgs/pseudo_roc_curve_best.png)
 
+The orange bars to the left of the center line represent _false negatives_, and the blue bars to the right of the center line represent _false positives_.
 
+A confusion matrix for the model is shown below:  
+![](./imgs/confusion_matrix.png)  
+From the confusion matrix, the follow metrics can be calculated:
 
+Specificity = 0.993  
+FPR = 0.007  
+Recall/TPR = 0.7351  
+Precision = 0.832  
 
 ### __Next Steps__
 
