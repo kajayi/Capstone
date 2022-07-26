@@ -44,11 +44,11 @@ The averages for 10 of the 13 calculated structural features are as follows:
 
 ![](./imgs/chemical_property_rankings.png)
 
-![](./imgs/violin_plots.png)
+![](./imgs/violin_plots_h.png)
 
 From the above, it seems that hERG inhibitors, on average, have a greater number of H-bond acceptors and fewer H-bond donors, suggesting that the binding site of hERG may have H-bond-donating residues (e.g., serine, threonine, proline).  However, the differences are quite small, so it important to avoid over-interpreting that result.  The data also suggests that hERG inhibitors tend to have more rings and tend to be more flexible (see # of rotatable bonds), though both attributes could be byproducts of a higher average molecular weight (see below). 
 
-Conventional wisdom states that hERG inhibitors tend to 1) have higher molecular weights, 2) be more hydrophobic, and 3) contain basic nitrogen groups.  Exploratory data analysis seems to corroborate those ideas:
+Conventional wisdom states that hERG inhibitors tend to 1) have higher molecular weights, 2) be more hydrophobic, and 3) contain basic nitrogen groups.  Exploratory data analysis seems to corroborate those ideas (also see violin plot at row 2, column 2 of the image above):
 
 ![](./imgs/basic_nitrogens.png) ![](./imgs/no_basic_nitrogens.png) 
 
@@ -83,6 +83,9 @@ The results showed that geometric information was needed to obtain a model that 
 
 Performance of the best model from the graph convolution embeddings:  
 ![](./imgs/pseudo_roc_curve.png)
+
+
+
 
 ### __Next Steps__
 
